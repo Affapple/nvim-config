@@ -7,8 +7,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "html", "tsx", "jsx", "ts", "js", "css", "lua" },
-	command = "setlocal shiftwidth=2 tabstop=2",
+  pattern = { "html", "tsx", "jsx", "ts", "js", "css", "lua" },
+  command = "setlocal shiftwidth=2 tabstop=2",
 })
 
 vim.opt.smartindent = true
@@ -34,3 +34,12 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.opt.cmdheight = 0
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "md", "txt", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(0, "n", "k", "gk", { noremap = true, silent = true })
+  end,
+})
