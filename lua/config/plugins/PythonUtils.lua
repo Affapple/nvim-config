@@ -40,4 +40,10 @@ return {
       end)
     end,
   },
+  {
+    "karloskar/poetry-nvim",
+    config = function()
+      require("poetry-nvim").setup()
+    end,
+  },
 }
