@@ -11,7 +11,32 @@ return {
     null_ls.setup({
       sources = {
         -- Default formatter
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with({
+          extra_args = { "--plugin", "prettier-plugin-xml", "--parser", "xml" },
+          filetypes = {
+            "javascript",
+            "typescript",
+            "css",
+            "scss",
+            "less",
+            "html",
+            "json",
+            "yaml",
+            "markdown",
+            "graphql",
+            "vue",
+            "svelte",
+            "astro",
+            "xml",
+            "java",
+            "python",
+            "c",
+            "cpp",
+            "h",
+            "hpp",
+            "go",
+          },
+        }),
         null_ls.builtins.formatting.stylua,
 
         null_ls.builtins.diagnostics.mypy.with({
