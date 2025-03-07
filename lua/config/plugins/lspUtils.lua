@@ -72,4 +72,7 @@ return {
 			})
 		end,
 	},
+	{
+		"boltlessengineer/sense.nvim",
+	},
 }
