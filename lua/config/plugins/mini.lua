@@ -1,10 +1,11 @@
 return {
 	{
-		"echasnovski/mini.ai",
+		"echasnovski/mini.nvim",
 		version = "*",
 
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+
 		config = function()
 			local ai = require("mini.ai")
 			ai.setup({
@@ -17,6 +18,8 @@ return {
 					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
 					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
 				},
+
+				require("mini.surround").setup(),
 			})
 		end,
 	},

@@ -41,7 +41,13 @@ return {
   },
 
   config = function()
-    require("telescope").setup({})
+    require("telescope").setup({
+      pickers = {
+        colorscheme = {
+          enable_preview = true,
+        },
+      },
+    })
     local builtin = require("telescope.builtin")
     local telescope_actions = require("telescope.actions")
     local actions = getConfig()
