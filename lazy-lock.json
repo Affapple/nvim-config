@@ -51,6 +51,7 @@
   "poetry-nvim": { "branch": "main", "commit": "79626bec95ed3c75fcbb49b4d31e7d886c221918" },
   "render-markdown.nvim": { "branch": "main", "commit": "8bb0d4725cc4909a603158d44ff28b6158ad9278" },
   "rose-pine": { "branch": "main", "commit": "96ff3993a67356ee85d1cdab9be652cdc1c5d1ac" },
+  "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "sense.nvim": { "branch": "main", "commit": "74e61f251fffc64c4f29160569ccde087316b798" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
