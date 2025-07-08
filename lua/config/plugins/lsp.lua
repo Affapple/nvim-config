@@ -14,7 +14,6 @@ return {
     "saghen/blink.cmp",
     -- "j-hui/fidget.nvim",
   },
-
   config = function()
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -47,6 +46,7 @@ return {
         "pyright",
         "jdtls",
         "clangd",
+        "gopls",
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -126,6 +126,25 @@ return {
             settings = {},
           })
         end,
+
+        ["gopls"] = function()
+          local lspconfig = require("lspconfig")
+          lspconfig.gopls.setup({
+            capabilities = capabilities,
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+            settings = {
+              gopls = {
+                completeUnimported = true,
+                usePlaceholders = true,
+                analyses = {
+                  unusedparams = true,
+                },
+              },
+            },
+          })
+        end,
       },
     })
     ---------------- END LSP CONFIG
@@ -150,7 +169,7 @@ return {
     })
 
     require("nvim-autopairs").setup({
-      map_cr = true, -- Map <CR> in insert mode
+      map_cr = true,    -- Map <CR> in insert mode
       map_complete = true, -- Auto-insert `(` after selecting a function or method item
       auto_select = true, -- Automatically select the first item
     })
