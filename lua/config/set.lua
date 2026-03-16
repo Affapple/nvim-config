@@ -54,3 +54,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.api.nvim_buf_set_keymap(0, "n", "k", "gk", { noremap = true, silent = true })
 	end,
 })
+
+-- LATEX LOCAL LEADER
+vim.g.maplocalleader = "\\"

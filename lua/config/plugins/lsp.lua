@@ -22,34 +22,52 @@ return {
 		)
 
 		require("mason").setup({
-			ensure_installed = {
-				"ruff",
-				"mypy",
-				"pyright",
-				"typescript-language-server",
-				"eslint-lsp",
-				"prettierd",
-				"html-lsp",
-				"css-lsp",
-				"stylua",
-				"luacheck",
-				"rust_analyzer",
-				"marksman",
-			},
+			ensure_installed = {},
 		})
 
 		---------------- LSP CONFIG
+		--- Non LSP
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				"java-debug-adapter",
+				"java-test",
+
+				-- Python
+				"mypy",
+				"ruff",
+				-- linters
+				"prettierd",
+				-- lua
+				"stylua",
+				"luacheck",
+			},
+		})
 
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"lua_ls",
-				"rust_analyzer",
-				"pyright",
-				"jdtls",
+				"eslint",
+
+				-- C/C++/Rust/GO
 				"clangd",
+				"rust_analyzer",
 				"gopls",
-				"marksman",
+
+				-- java/kotlin
+				"jdtls",
+				"kotlin_lsp",
+
+				"lua_ls", -- lua
+				"pyright", -- Python
+
+				-- Web
+				"ts_ls",
+				"html",
+				"cssls",
+
+				"marksman", -- Idk
 			},
+
+			automatic_installation = true,
 			handlers = {
 				function(server_name) -- default handler (optional)
 					local excluded = { jdtls = true, ruff = true, rust_analyzer = true }
@@ -85,6 +103,10 @@ return {
 								runtime = { version = "Lua 5.1" },
 								diagnostics = {
 									globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+								},
+								workspace = {
+									library = vim.api.nvim_get_runtime_file("", true),
+									checkThirdParty = false,
 								},
 							},
 						},
@@ -150,12 +172,6 @@ return {
 			},
 		})
 		---------------- END LSP CONFIG
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"java-debug-adapter",
-				"java-test",
-			},
-		})
 		vim.api.nvim_command("MasonToolsInstall")
 
 		vim.diagnostic.config({
